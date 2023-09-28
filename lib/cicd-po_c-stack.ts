@@ -12,6 +12,7 @@ export class CicdPoCStack extends cdk.Stack {
       pipelineName: 'PoCPipeline',
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub('agnee008/cicd-PoC', 'main'), 
+        installCommands: ['npm i -g npm@latest'],
         commands: ['npm ci', 
                    'npm run build', 
                    'npx cdk synth']
